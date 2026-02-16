@@ -3,11 +3,16 @@ import hashlib
 import zlib
 import time
 
-WORKING_DIR = "../dir"
-GIT_DIR = f"{WORKING_DIR}/.git"
-OBJECTS_DIR = f"{GIT_DIR}/objects"
-INDEX_FILE = f"{GIT_DIR}/index"
-HEAD_FILE = f"{GIT_DIR}/HEAD"
+from config import (
+    WORKING_DIR,
+    GIT_DIR,
+    OBJECTS_DIR,
+    INDEX_FILE,
+    HEAD_FILE,
+    HEADS_DIR,
+    TAGS_DIR,
+    STASH_FILE
+)
 
 # -------------------------
 # Write object
@@ -17,8 +22,8 @@ def write_object(data, obj_type):
     store = header + data
     sha1 = hashlib.sha1(store).hexdigest()
 
-    obj_dir = f"{OBJECTS_DIR}/{sha1[:2]}"
-    obj_file = f"{obj_dir}/{sha1[2:]}"
+    obj_dir = os.path.join(OBJECTS_DIR, sha1[:2])
+    obj_file = os.path.join(obj_dir, sha1[2:])
     os.makedirs(obj_dir, exist_ok=True)
 
     with open(obj_file, "wb") as f:

@@ -2,11 +2,16 @@ import os
 import hashlib
 import zlib
 
-WORKING_DIR = "../dir"
-GIT_DIR = f"{WORKING_DIR}/.git"
-OBJECTS_DIR = f"{GIT_DIR}/objects"
-INDEX_FILE = f"{GIT_DIR}/index"
-HEAD_FILE = f"{GIT_DIR}/HEAD"
+from config import (
+    WORKING_DIR,
+    GIT_DIR,
+    OBJECTS_DIR,
+    INDEX_FILE,
+    HEAD_FILE,
+    HEADS_DIR,
+    TAGS_DIR,
+    STASH_FILE
+)
 
 # -------------------------
 def hash_file(path):
@@ -17,7 +22,7 @@ def hash_file(path):
 
 # -------------------------
 def read_object(sha1):
-    path = f"{OBJECTS_DIR}/{sha1[:2]}/{sha1[2:]}"
+    path = os.path.join(OBJECTS_DIR, sha1[:2], sha1[2:])
     with open(path,"rb") as f:
         return zlib.decompress(f.read()).split(b"\0",1)[1]
 

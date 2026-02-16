@@ -1,9 +1,15 @@
 import zlib
 
-WORKING_DIR = "../dir"
-GIT_DIR = f"{WORKING_DIR}/.git"
-OBJECTS_DIR = f"{GIT_DIR}/objects"
-HEAD_FILE = f"{GIT_DIR}/HEAD"
+from config import (
+    WORKING_DIR,
+    GIT_DIR,
+    OBJECTS_DIR,
+    INDEX_FILE,
+    HEAD_FILE,
+    HEADS_DIR,
+    TAGS_DIR,
+    STASH_FILE
+)
 
 # -------------------------
 def read_object(sha1):
