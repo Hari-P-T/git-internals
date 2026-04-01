@@ -1,0 +1,5 @@
+mini_git
+cpp/src/*.o
+__pycache__/
+tests/__pycache__/
+server/data/

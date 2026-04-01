@@ -1,0 +1,9 @@
+WORKING_DIR=dir
+GIT_DIR=.git
+OBJECTS_DIR=objects
+REFS_DIR=refs
+HEADS_DIR=heads
+TAGS_DIR=tags
+INDEX_FILE=index
+HEAD_FILE=HEAD
+STASH_FILE=stash
